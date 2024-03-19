@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RobotEnemy1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f2d3007f97a574d23b51659db2ee6d81, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: f2d3007f97a574d23b51659db2ee6d81, type: 3}
       propertyPath: m_Controller
       value: 

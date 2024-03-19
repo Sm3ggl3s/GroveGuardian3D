@@ -93,8 +93,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8657892199477959734}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab1a007b4115f2b4dbe7810c037b1ae5, type: 3}
+  m_Script: {fileID: 11500000, guid: 83f276c5c0dfa0947beb0e2ffce5d326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 70
+  bulletDamage: 0
   impactEffect: {fileID: 6114703813121287782, guid: b5967b6dc55ec6743bf5b2532f6ffac1, type: 3}

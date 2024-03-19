@@ -12,6 +12,7 @@ public class Turret : MonoBehaviour
     public float turnSpeed = 10;
 
     [Header("Attributes")]
+    public int turretDamage = 20;
     public float range = 15f;
     public float fireRate = 1f;
     private float fireCountdown = 0f;
@@ -66,7 +67,7 @@ public class Turret : MonoBehaviour
         Bullet bullet = bulletGO.GetComponent<Bullet>();
 
         if(bullet != null)
-            bullet.Seek(target);
+            bullet.Seek(target, turretDamage);
     }
     void OnDrawGizmosSelected () {
         Gizmos.color = Color.red;
