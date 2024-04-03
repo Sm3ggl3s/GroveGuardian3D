@@ -18,10 +18,13 @@ public class Turret : MonoBehaviour
     private float fireCountdown = 0f;
     public GameObject bulletPrefab;
     public Transform firePoint;
+    public int turretBurst = 5;
+    private float buffValue;
 
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(TurretBurst());
         InvokeRepeating ("UpdateTarget", 0f, 0.5f);
     }
 
@@ -39,27 +42,58 @@ public class Turret : MonoBehaviour
 
         if (nearestEnemy != null && closest <= range){
             target = nearestEnemy.transform;
+
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 10f);
+            foreach (Collider collider in colliders)
+            {
+                FervorFlower fervorFlower = collider.GetComponent<FervorFlower>();
+                if (fervorFlower != null)
+                {
+                    buffValue = fervorFlower.buff;
+                    Debug.Log("Detected FervorFlower with buff value: " + buffValue);
+                }
+            }
         } else{
             target = null;
         }
     }
-    // Update is called once per frame
+
+    IEnumerator TurretBurst()
+    {
+        while (true)
+        {
+            Debug.Log("E");
+            if (fireCountdown <= 0 && target != null)
+            {
+                if (turretBurst > 0)
+                {
+                    shoot();
+                    for (int i = 1; i < turretBurst; i++)
+                    {
+                        yield return new WaitForSeconds(0.1f);
+                        shoot();
+                    }
+                }
+                fireCountdown = 1f / fireRate;
+            }
+
+            fireCountdown -= Time.deltaTime;
+            if(buffValue != 0.0f)
+                fireCountdown = fireCountdown/buffValue;
+            // Yield to the next frame before checking again
+            yield return null;
+        }
+    }
+
     void Update()
     {
         if (target == null)
             return;
-        
+
         Vector3 aim = target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(aim);
-        Vector3 rotation = Quaternion.Lerp(PartToRotate.rotation,lookRotation,Time.deltaTime * turnSpeed).eulerAngles;
+        Vector3 rotation = Quaternion.Lerp(PartToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         PartToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-
-        if(fireCountdown <= 0){
-            shoot();
-            fireCountdown = 1f / fireRate;
-        }
-
-        fireCountdown -= Time.deltaTime;
     }
 
     void shoot() {
