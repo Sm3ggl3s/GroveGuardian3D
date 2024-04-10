@@ -10,11 +10,11 @@ public class EnemyMovement : MonoBehaviour {
 
     private Transform target; // where to move to
     private int wp_idx = 0; // first waypoint index
-
-
+    private GardenDamage gardenDamage; // reference to damage script
 
     void Start() {
         target = Waypoints.points[0]; // set the first waypoint for the enemy
+        gardenDamage = GameObject.Find("Garden").GetComponent<GardenDamage>(); // find the component with the damage script
     }
 
     void Update() {
@@ -32,14 +32,16 @@ public class EnemyMovement : MonoBehaviour {
         PartToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 
         // If we've reached waypoint (within small distance to wp), change to next target
-        if (Vector3.Distance(transform.position, target.position) <= 0.2f) {
+        if(Vector3.Distance(transform.position, target.position) <= 0.2f) {
             GetNextWaypoint();
         }
     }
 
     // Function to help retrieve next waypoint and set it as the new target
     void GetNextWaypoint() {
+        // If last waypoint reached, remove gameobject and deal damage to Garden
         if(wp_idx >= Waypoints.points.Length - 1) {
+            gardenDamage.takeDamage(1f);
             Destroy(gameObject);
             return;
         }

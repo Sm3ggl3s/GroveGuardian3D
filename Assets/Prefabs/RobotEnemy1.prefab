@@ -108,6 +108,7 @@ MonoBehaviour:
   PartToRotate: {fileID: 5647043384488341103}
   speed: 2
   turnSpeed: 5
+  garden: {fileID: 4412587849181077839, guid: d9db177b632685f449ee1832fc01a57e, type: 3}
 --- !u!54 &5506506576590880759
 Rigidbody:
   m_ObjectHideFlags: 0
