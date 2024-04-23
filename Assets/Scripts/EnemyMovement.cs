@@ -7,14 +7,16 @@ public class EnemyMovement : MonoBehaviour {
     public Transform PartToRotate; // what part of the model to rotate
     public float speed = 5f; // movement speed
     public float turnSpeed = 5f; // rotation speed
-
+    
     private Transform target; // where to move to
     private int wp_idx = 0; // first waypoint index
     private GardenDamage gardenDamage; // reference to damage script
-
+    public float slowed = 1f; //number to track slowing effect
+    private float speedTracker; //stores the original speed
     void Start() {
+        speedTracker = speed;
         target = Waypoints.points[0]; // set the first waypoint for the enemy
-        gardenDamage = GameObject.Find("Greenhouse").GetComponent<GardenDamage>(); // find the component with the damage script
+        gardenDamage = GameObject.Find("Garden").GetComponent<GardenDamage>(); // find the component with the damage script
     }
 
     void Update() {
@@ -24,7 +26,7 @@ public class EnemyMovement : MonoBehaviour {
         // dir.normalized * speed: normalize the vector to keep it going at the same specified speed
         // Time.deltaTime: accounts for delays/different framerates on different machines
         // Space.world: move relative to the game world
-
+        Debug.Log(speed);
         // From Turret.cs
         Vector3 aim = target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(aim);
@@ -48,6 +50,20 @@ public class EnemyMovement : MonoBehaviour {
 
         wp_idx ++;
         target = Waypoints.points[wp_idx];
+    }
+
+    public IEnumerator ReduceSpeed(float duration){       
+        // Slow down the enemy
+        if (speedTracker == speed){
+            speed *= slowed;
+        
+            // Wait for the specified duration
+            yield return new WaitForSeconds(duration);
+            Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+            // Restore the original speed
+            speed = speedTracker;
+            slowed = 1f;
+        }
     }
 
 }

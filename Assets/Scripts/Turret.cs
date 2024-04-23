@@ -19,6 +19,7 @@ public class Turret : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
     public int turretBurst = 5;
+    public float slowEffect = 0f;
     private float buffValue;
 
     // Start is called before the first frame update
@@ -62,7 +63,6 @@ public class Turret : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("E");
             if (fireCountdown <= 0 && target != null)
             {
                 if (turretBurst > 0)
@@ -101,7 +101,7 @@ public class Turret : MonoBehaviour
         Bullet bullet = bulletGO.GetComponent<Bullet>();
 
         if(bullet != null)
-            bullet.Seek(target, turretDamage);
+            bullet.Seek(target, turretDamage, slowEffect);
     }
     void OnDrawGizmosSelected () {
         Gizmos.color = Color.red;

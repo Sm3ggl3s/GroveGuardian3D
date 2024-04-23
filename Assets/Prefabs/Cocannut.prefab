@@ -85,7 +85,8 @@ MonoBehaviour:
   fireRate: 1
   bulletPrefab: {fileID: 8657892199477959734, guid: 4dec3721a10031640a7e3a6b0288ca37, type: 3}
   firePoint: {fileID: 6315819554468824567}
-  turretBurst: 5
+  turretBurst: 1
+  slowEffect: 1
 --- !u!1 &7506874826225957733
 GameObject:
   m_ObjectHideFlags: 0
