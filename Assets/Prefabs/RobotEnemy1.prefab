@@ -824,6 +824,7 @@ GameObject:
   - component: {fileID: 5506506576590880759}
   - component: {fileID: -6468727214228185552}
   - component: {fileID: -8787574506812672395}
+  - component: {fileID: -8173628819963026282}
   m_Layer: 0
   m_Name: RobotEnemy1
   m_TagString: Enemy
@@ -884,6 +885,7 @@ MonoBehaviour:
   PartToRotate: {fileID: 5647043384488341103}
   speed: 2
   turnSpeed: 5
+  slowed: 1
 --- !u!54 &5506506576590880759
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5708,6 +5710,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-8173628819963026282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7943906551763568682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f20e78075c3528146b28ea335772baba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!1 &8050861040417848940
 GameObject:
   m_ObjectHideFlags: 0
