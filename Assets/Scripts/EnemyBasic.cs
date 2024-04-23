@@ -18,11 +18,15 @@ public class EnemyBasic : MonoBehaviour
         
     }
 
-    public void TakeDamage(int damage){
+    public void TakeDamage(int damage, float slowEffect){
         health -= damage;
         if(health <= 0){
             Die();
         }
+        EnemyMovement a = transform.GetComponent<EnemyMovement>();
+        if(a.slowed < slowEffect || a.slowed == 1)
+            a.slowed = slowEffect;
+            StartCoroutine(a.ReduceSpeed(1f));
     }
 
     void Die(){
