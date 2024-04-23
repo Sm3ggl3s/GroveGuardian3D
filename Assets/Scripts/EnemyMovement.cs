@@ -14,7 +14,7 @@ public class EnemyMovement : MonoBehaviour {
 
     void Start() {
         target = Waypoints.points[0]; // set the first waypoint for the enemy
-        gardenDamage = GameObject.Find("Garden").GetComponent<GardenDamage>(); // find the component with the damage script
+        gardenDamage = GameObject.Find("Greenhouse").GetComponent<GardenDamage>(); // find the component with the damage script
     }
 
     void Update() {

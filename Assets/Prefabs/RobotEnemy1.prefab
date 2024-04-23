@@ -823,7 +823,7 @@ GameObject:
   - component: {fileID: -1595410254609798317}
   - component: {fileID: 5506506576590880759}
   m_Layer: 0
-  m_Name: RobotEnemy1_test
+  m_Name: RobotEnemy1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
