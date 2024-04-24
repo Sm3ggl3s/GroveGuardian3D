@@ -883,7 +883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PartToRotate: {fileID: 5647043384488341103}
-  speed: 2
+  speed: 15
   turnSpeed: 5
   slowed: 1
 --- !u!54 &5506506576590880759

@@ -13,10 +13,11 @@ public class EnemyMovement : MonoBehaviour {
     private GardenDamage gardenDamage; // reference to damage script
     public float slowed = 1f; //number to track slowing effect
     private float speedTracker; //stores the original speed
+
     void Start() {
         speedTracker = speed;
         target = Waypoints.points[0]; // set the first waypoint for the enemy
-        gardenDamage = GameObject.Find("Garden").GetComponent<GardenDamage>(); // find the component with the damage script
+        gardenDamage = GameObject.Find("Greenhouse").GetComponent<GardenDamage>(); // find the component with the damage script
     }
 
     void Update() {
@@ -26,7 +27,9 @@ public class EnemyMovement : MonoBehaviour {
         // dir.normalized * speed: normalize the vector to keep it going at the same specified speed
         // Time.deltaTime: accounts for delays/different framerates on different machines
         // Space.world: move relative to the game world
-        Debug.Log(speed);
+
+        //Debug.Log(speed);
+
         // From Turret.cs
         Vector3 aim = target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(aim);

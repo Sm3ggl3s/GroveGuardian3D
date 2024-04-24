@@ -132,7 +132,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 11194122}
-  - component: {fileID: 11194121}
   m_Layer: 0
   m_Name: Game_Manager
   m_TagString: Untagged
@@ -140,21 +139,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &11194121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 11194120}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09555d24336555b429e872e2dd627d77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 7310956583376409232, guid: 0156f02a2ba604eb4b40db16defb6275, type: 3}
-  spawnPoint: {fileID: 1545011356464760794}
-  timeBetweenWaves: 10
 --- !u!4 &11194122
 Transform:
   m_ObjectHideFlags: 0
@@ -904,6 +888,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1325911444}
   - component: {fileID: 1325911443}
+  - component: {fileID: 1325911445}
   m_Layer: 0
   m_Name: Enemy_Waypoints
   m_TagString: Untagged
@@ -948,6 +933,21 @@ Transform:
   - {fileID: 2037075364}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1325911445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325911442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09555d24336555b429e872e2dd627d77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 7310956583376409232, guid: 0156f02a2ba604eb4b40db16defb6275, type: 3}
+  spawnPoint: {fileID: 1545011356464760794}
+  timeBetweenWaves: 10
 --- !u!4 &1510210301 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4621659991679216746, guid: 80694d649bc0f4847a44df50caecf876, type: 3}
