@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "GroveGuardian3D (main).sln"
+    "dotnet.defaultSolution": "GroveGuardian3D.sln"
 }
