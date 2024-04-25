@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+[System.Serializable]
+public class towerType {
+    public GameObject towerPrefab;
+}
+
 public class BuildingGridPlacer : BuildingPlacer
 {
     [Header("Grid Settings")]
@@ -15,6 +20,9 @@ public class BuildingGridPlacer : BuildingPlacer
 
     public new GameObject raycastOriginObject;
 
+    // list of Towers
+    public List<towerType> towers = new List<towerType>();
+
 #if UNITY_EDITOR
     private void OnValidate() {
         UpdateGridVisual();
@@ -22,13 +30,20 @@ public class BuildingGridPlacer : BuildingPlacer
 #endif
 
     private void Start() {
+        for (int i = 0; i < towers.Count; i++) {
+            GameObject tower = towers[i].towerPrefab;
+            print(towers[i].towerPrefab.name);
+        }
         UpdateGridVisual();
         EnableGridVisual(false);
     }
 
     private void Update() {
-        if (_buildingPrefab != null) {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            SetBuildingPrefab(0);
+        }
 
+        if (_buildingPrefab != null) {
             // Right Click on Mouse exit building mode
             if (Input.GetMouseButtonDown(1)) {
                 Destroy(_toBuild);
@@ -57,7 +72,7 @@ public class BuildingGridPlacer : BuildingPlacer
                     BuildingManager m = _toBuild.GetComponent<BuildingManager>();
                     if (m.hasValidPlacement) {
                         m.SetPlacementMode(PlacementMode.Fixed);
-                    
+                        print("Fixed");
                         // Exit building mode
                         _buildingPrefab = null;
                         _toBuild = null;
@@ -70,8 +85,27 @@ public class BuildingGridPlacer : BuildingPlacer
         }
     }
 
+    private void SetBuildingPrefab(int index) {
+        if (index < 0 || index >= towers.Count) return;
+
+        _buildingPrefab = towers[index].towerPrefab;
+        PrepareBuilding();
+        EventSystem.current.SetSelectedGameObject(null);
+    }
+
     protected override void PrepareBuilding() {
-        base.PrepareBuilding();
+        if (_toBuild) {
+            Destroy(_toBuild);
+        }
+
+        _toBuild = Instantiate(_buildingPrefab);
+        print(_toBuild.name);
+        _toBuild.SetActive(false);
+
+        BuildingManager m = _toBuild.GetComponent<BuildingManager>();
+
+        m.isFixed = false;
+        m.SetPlacementMode(PlacementMode.Valid);
         EnableGridVisual(true);
     }
 
