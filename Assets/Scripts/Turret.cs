@@ -50,6 +50,7 @@ public class Turret : MonoBehaviour
                 FervorFlower fervorFlower = collider.GetComponent<FervorFlower>();
                 if (fervorFlower != null)
                 {
+                    Debug.Log("Check");
                     buffValue = fervorFlower.buff;
                     Debug.Log("Detected FervorFlower with buff value: " + buffValue);
                 }
