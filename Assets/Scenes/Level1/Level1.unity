@@ -887,7 +887,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1325911444}
-  - component: {fileID: 1325911443}
   - component: {fileID: 1325911445}
   m_Layer: 0
   m_Name: Enemy_Waypoints
@@ -896,18 +895,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1325911443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1325911442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff4c586563cc10b438a4e67a21a377dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1325911444
 Transform:
   m_ObjectHideFlags: 0
