@@ -52,11 +52,6 @@ public class BuildingGridPlacer : BuildingPlacer
                 return;
             }
 
-            // Rotate preview with Spacebar
-            if (Input.GetKeyDown(KeyCode.Space)) {
-                _toBuild.transform.Rotate(Vector3.up, 90f);
-            }
-
             _ray = new Ray(raycastOriginObject.transform.position, Vector3.down);
             if (Physics.Raycast(_ray, out _hit, 1000f, groundLayer)) {
                 if (!_toBuild.activeSelf) {
