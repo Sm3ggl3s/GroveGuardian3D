@@ -32,7 +32,6 @@ public class BuildingGridPlacer : BuildingPlacer
     private void Start() {
         for (int i = 0; i < towers.Count; i++) {
             GameObject tower = towers[i].towerPrefab;
-            print(towers[i].towerPrefab.name);
         }
         UpdateGridVisual();
         EnableGridVisual(false);
@@ -72,7 +71,7 @@ public class BuildingGridPlacer : BuildingPlacer
                     BuildingManager m = _toBuild.GetComponent<BuildingManager>();
                     if (m.hasValidPlacement) {
                         m.SetPlacementMode(PlacementMode.Fixed);
-                        print("Fixed");
+                        
                         // Exit building mode
                         _buildingPrefab = null;
                         _toBuild = null;
@@ -99,7 +98,6 @@ public class BuildingGridPlacer : BuildingPlacer
         }
 
         _toBuild = Instantiate(_buildingPrefab);
-        print(_toBuild.name);
         _toBuild.SetActive(false);
 
         BuildingManager m = _toBuild.GetComponent<BuildingManager>();
