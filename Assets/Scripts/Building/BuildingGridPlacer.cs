@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -23,6 +25,10 @@ public class BuildingGridPlacer : BuildingPlacer
     // list of Towers
     public List<towerType> towers = new List<towerType>();
 
+    [Header("Camera")]
+    public CinemachineFreeLook combatCamera;
+    public CinemachineFreeLook basicCamera;
+
 #if UNITY_EDITOR
     private void OnValidate() {
         UpdateGridVisual();
@@ -38,43 +44,52 @@ public class BuildingGridPlacer : BuildingPlacer
     }
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            SetBuildingPrefab(0);
+        if (CinemachineCore.Instance.IsLive(combatCamera)) {
+            return;
         }
+        
+        if (CinemachineCore.Instance.IsLive(basicCamera)) {
 
-        if (_buildingPrefab != null) {
-            // Right Click on Mouse exit building mode
-            if (Input.GetMouseButtonDown(1)) {
-                Destroy(_toBuild);
-                _buildingPrefab = null;
-                _toBuild = null;
-                EnableGridVisual(false);
-                return;
+            for (int i = 0; i < towers.Count; i++) {
+                if (Input.GetKeyDown((KeyCode)((int)KeyCode.Alpha1 + i))) {
+                    SetBuildingPrefab(towers[i].towerPrefab);
+                }
             }
 
-            _ray = new Ray(raycastOriginObject.transform.position, Vector3.down);
-            if (Physics.Raycast(_ray, out _hit, 1000f, groundLayer)) {
-                if (!_toBuild.activeSelf) {
-                    _toBuild.SetActive(true);
+            if (_buildingPrefab != null) {
+                // Right Click on Mouse exit building mode
+                if (Input.GetMouseButtonDown(1)) {
+                    Destroy(_toBuild);
+                    _buildingPrefab = null;
+                    _toBuild = null;
+                    EnableGridVisual(false);
+                    return;
                 }
-                Vector3 hitPoint = _hit.point;
-                hitPoint.y = 0;
-                _toBuild.transform.position = ClampToNearest(hitPoint, cellSize);
 
-                // Left Click on Mouse place building
-                if (Input.GetMouseButtonDown(0)) {
-                    BuildingManager m = _toBuild.GetComponent<BuildingManager>();
-                    if (m.hasValidPlacement) {
-                        m.SetPlacementMode(PlacementMode.Fixed);
-                        
-                        // Exit building mode
-                        _buildingPrefab = null;
-                        _toBuild = null;
-                        EnableGridVisual(false);
+                _ray = new Ray(raycastOriginObject.transform.position, Vector3.down);
+                if (Physics.Raycast(_ray, out _hit, 1000f, groundLayer)) {
+                    if (!_toBuild.activeSelf) {
+                        _toBuild.SetActive(true);
                     }
+                    Vector3 hitPoint = _hit.point;
+                    hitPoint.y = 0;
+                    _toBuild.transform.position = ClampToNearest(hitPoint, cellSize);
+
+                    // Left Click on Mouse place building
+                    if (Input.GetMouseButtonDown(0)) {
+                        BuildingManager m = _toBuild.GetComponent<BuildingManager>();
+                        if (m.hasValidPlacement) {
+                            m.SetPlacementMode(PlacementMode.Fixed);
+                            
+                            // Exit building mode
+                            _buildingPrefab = null;
+                            _toBuild = null;
+                            EnableGridVisual(false);
+                        }
+                    }
+                } else if (_toBuild.activeSelf) {
+                    _toBuild.SetActive(false);
                 }
-            } else if (_toBuild.activeSelf) {
-                _toBuild.SetActive(false);
             }
         }
     }
