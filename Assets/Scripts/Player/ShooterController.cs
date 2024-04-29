@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShooterController : MonoBehaviour {
@@ -15,26 +16,35 @@ public class ShooterController : MonoBehaviour {
     [Header("Bullet Settings")]
     [SerializeField] private Transform bulletPrefab;
     [SerializeField] private Transform bulletSpawnPoint;
-
     private Vector3 mouseWorldPosition;
 
     [Header("Timer Settings")]
     private float timeSinceLastShot = 0f;
     private float shootInterval = 0.5f;
 
+    [Header("Animation")]
+    public Transform animatorObject;
+    private Animator animator;
+
 
     private void Start() {
         aimColliderLayerMask = LayerMask.GetMask("Default", "WhatIsGround");
+
+        // Animation
+        animator = animatorObject.GetComponent<Animator>();
     }
 
     private void Update() {
         if (CinemachineCore.Instance.IsLive(combatCamera)) {
+            animator.SetBool("IsShooting", true);
             Aim();
             timeSinceLastShot += Time.deltaTime;
             if (Input.GetMouseButton(0) && timeSinceLastShot >= shootInterval) {
                 Shoot();
                 timeSinceLastShot = 0f;
             }
+        } else {
+            animator.SetBool("IsShooting", false);
         }
         
     }
