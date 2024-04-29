@@ -22,7 +22,7 @@ public class WaveSpawner : MonoBehaviour
     }
 
     void Update() {
-        if(countdown <= 0f) {
+        if(countdown <= 0f && !(GameManager.GameIsOver)) {
             //StartCoroutine(SpawnWave());
             SpawnSingleEnemy();
             countdown = timeBetweenWaves;
