@@ -10,11 +10,14 @@ public class GardenDamage : MonoBehaviour {
         // If the next thing of damage is enough to destroy the Garden, then destroy the Garden
         if(health - damageAmount <= 0) {
             health = 0;
+            //Debug.Log(health);
+            GameManager.GardenIsDestroyed = true;
             Destroy(gameObject);
             return;
         }
 
         // Else, damage the Garden
         health -= damageAmount;
+        //Debug.Log(health);
     }
 }

@@ -48,7 +48,7 @@ public class EnemyMovement : MonoBehaviour {
     void GetNextWaypoint() {
         // If last waypoint reached, remove gameobject and deal damage to Garden
         if(wp_idx >= WaypointTargets.Length - 1) {
-            gardenDamage.takeDamage(1f);
+            gardenDamage.takeDamage(100f);
             Destroy(gameObject);
             return;
         }
