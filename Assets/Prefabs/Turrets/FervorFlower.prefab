@@ -348,8 +348,8 @@ GameObject:
   - component: {fileID: 3290779237921884442}
   - component: {fileID: 9079056699012346350}
   m_Layer: 0
-  m_Name: flower
-  m_TagString: Untagged
+  m_Name: FervorFlower
+  m_TagString: FervorFlower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
