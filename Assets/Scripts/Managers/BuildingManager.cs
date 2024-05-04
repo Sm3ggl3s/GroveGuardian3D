@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,6 +34,8 @@ public class BuildingManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (isFixed) {
+            Debug.Log("Collision with fixed building");
+            GetComponent<Collider>().isTrigger = false;
             return;
         }
         // ignore ground objects
@@ -41,7 +44,6 @@ public class BuildingManager : MonoBehaviour
         }
 
         _nObstacles++;
-        print(_nObstacles + "enter");
         SetPlacementMode(PlacementMode.Invalid);
 
         // if the player is colliding with the building
@@ -52,6 +54,7 @@ public class BuildingManager : MonoBehaviour
 
     private void OnTriggerExit(Collider other) {
         if (isFixed) {
+            Debug.Log("End Collision with fixed building");
             return;
         } 
         // ignore ground objects
@@ -60,7 +63,6 @@ public class BuildingManager : MonoBehaviour
         }
 
         _nObstacles--;
-        print(_nObstacles + "exit");
         if (_nObstacles == 0) {
             SetPlacementMode(PlacementMode.Valid);
         }
