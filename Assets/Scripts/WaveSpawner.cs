@@ -11,8 +11,10 @@ public class WaveSpawner : MonoBehaviour
 
     private float countdown = 3f; //however long to take at beginning of level to start the first wave
                                   //3 seconds
-    private float timeBetweenWaveEnemy = 0.3f; //use this to space out enemies that spawn in one wave, !!prevents stacking!!
+    private float timeBetweenWaveEnemy = 1f; //use this to space out enemies that spawn in one wave, !!prevents stacking!!
     private int waveNumber = 0;
+
+    public int maxWaveCount = 5;
 
     void Awake() {
         waypointTargets = new Transform[transform.childCount];
@@ -22,13 +24,15 @@ public class WaveSpawner : MonoBehaviour
     }
 
     void Update() {
-        if(countdown <= 0f && !(GameManager.GameIsOver)) {
-            //StartCoroutine(SpawnWave());
-            SpawnSingleEnemy();
-            countdown = timeBetweenWaves;
-        }
+        if(waveNumber <= maxWaveCount) {
+            if(countdown <= 0f && !(GameManager.GameIsOver)) {
+                StartCoroutine(SpawnWave());
+                //SpawnSingleEnemy();
+                countdown = timeBetweenWaves;
+            }
 
-        countdown -= Time.deltaTime; //reduce countdown by 1 every second
+            countdown -= Time.deltaTime; //reduce countdown by 1 every second
+        }
     }
 
     //Co-routine to space out spawning of enemies each wave

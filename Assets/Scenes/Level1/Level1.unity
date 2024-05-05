@@ -1564,6 +1564,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 7310956583376409232, guid: 0156f02a2ba604eb4b40db16defb6275, type: 3}
   spawnPoint: {fileID: 1545011356464760794}
   timeBetweenWaves: 10
+  maxWaveCount: 5
 --- !u!1 &1509480810
 GameObject:
   m_ObjectHideFlags: 0
