@@ -1411,7 +1411,7 @@ MonoBehaviour:
   - {fileID: 1819917551}
   - {fileID: 1338540984}
   - {fileID: 521969858}
-  coins: 1000
+  CoinTotal: 30
 --- !u!1 &602415496
 GameObject:
   m_ObjectHideFlags: 0
@@ -5362,7 +5362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5776346609373376158, guid: a43561e9445fa4219a41351db700feaa, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6392518179135071639, guid: a43561e9445fa4219a41351db700feaa, type: 3}
       propertyPath: shopManager
@@ -5672,8 +5672,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 1871249630}
   - {fileID: 1236647651}
+  - {fileID: 4679149625441916159}
+  - {fileID: 1155516993}
+  - {fileID: 1107474551}
   - {fileID: 706503520}
   - {fileID: 1889279705}
-  - {fileID: 4679149625441916159}
-  - {fileID: 1107474551}
-  - {fileID: 1155516993}
