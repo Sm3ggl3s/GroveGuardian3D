@@ -34,7 +34,6 @@ public class BuildingManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (isFixed) {
-            Debug.Log("Collision with fixed building");
             GetComponent<Collider>().isTrigger = false;
             return;
         }
@@ -54,7 +53,6 @@ public class BuildingManager : MonoBehaviour
 
     private void OnTriggerExit(Collider other) {
         if (isFixed) {
-            Debug.Log("End Collision with fixed building");
             return;
         } 
         // ignore ground objects

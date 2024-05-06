@@ -1,18 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class InventoryManager : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+public class InventoryManager : MonoBehaviour {
+    public static InventoryManager instance;
+
+
+    public List<string> inventoryItems = new List<string> { "Coccanut", "Fervor Flower", "Banana Burst", "Shackle Vine", "Blast Blossom", "Fertilizer"};
+    public List<int> inventoryQuantities = new List<int> { 0, 0, 0, 0, 0, 0};
+
+    public List<TextMeshProUGUI> inventoryQuantitiesText = new List<TextMeshProUGUI>();
+
+    public int coins = 30; 
+
+    private void Awake() {
+        if (instance == null) {
+            instance = this;
+        } else {
+            Destroy(gameObject);
+        }
+
+        // Set all inventory quantities to 0
+        for (int i = 0; i < inventoryQuantities.Count; i++) {
+            inventoryQuantities[i] = 0;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void removeTowerFromInventory(string towerName) {
+        for (int i = 0; i < inventoryItems.Count; i++) {
+            if (inventoryItems[i] == towerName) {
+                inventoryQuantities[i]--;
+                inventoryQuantitiesText[i].text = inventoryQuantities[i].ToString();
+            }
+        }
     }
+
+    public void addCoins(int amount) {
+        coins += amount;
+    }
+
+    public void removeCoins(int amount) {
+        coins -= amount;
+    }
+
+
 }

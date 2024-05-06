@@ -47,12 +47,21 @@ public class BuildingGridPlacer : BuildingPlacer
         if (CinemachineCore.Instance.IsLive(combatCamera)) {
             return;
         }
+
+        if (Cursor.lockState != CursorLockMode.Locked) {
+            return;
+        }
         
         if (CinemachineCore.Instance.IsLive(basicCamera)) {
 
             for (int i = 0; i < towers.Count; i++) {
                 if (Input.GetKeyDown((KeyCode)((int)KeyCode.Alpha1 + i))) {
-                    SetBuildingPrefab(towers[i].towerPrefab);
+                    if (InventoryManager.instance.inventoryQuantities[i] > 0) {
+                        SetBuildingPrefab(towers[i].towerPrefab);
+                    } else {
+                        Debug.Log("Not enough towers in inventory");
+                        break;
+                    }
                 }
             }
 
@@ -80,11 +89,15 @@ public class BuildingGridPlacer : BuildingPlacer
                         BuildingManager m = _toBuild.GetComponent<BuildingManager>();
                         if (m.hasValidPlacement) {
                             m.SetPlacementMode(PlacementMode.Fixed);
-                            
+                    
+                            //removes tower from inventory
+                            InventoryManager.instance.removeTowerFromInventory(_buildingPrefab.name);
+
                             // Exit building mode
                             _buildingPrefab = null;
                             _toBuild = null;
                             EnableGridVisual(false);
+
                         }
                     }
                 } else if (_toBuild.activeSelf) {
