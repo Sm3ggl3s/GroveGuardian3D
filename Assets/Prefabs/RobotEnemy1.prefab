@@ -883,8 +883,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PartToRotate: {fileID: 5647043384488341103}
-  speed: 15
+  speed: 2.5
   turnSpeed: 5
+  WaypointTargets: []
   slowed: 1
 --- !u!54 &5506506576590880759
 Rigidbody:
