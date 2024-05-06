@@ -6,13 +6,17 @@ public class PlayerMovement : MonoBehaviour {
     [Header("Movement")]
     public float moveSpeed;
     public float groundDrag;
+    public Transform orientation;
 
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
     bool isGrounded;
 
-    public Transform orientation;
+    [Header("Animation")]
+    public Transform animatorObject;
+    private Animator animator;
+
 
     float horizontalInput;
     float verticalInput;
@@ -24,6 +28,9 @@ public class PlayerMovement : MonoBehaviour {
     private void Start() {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+
+        animator = animatorObject.GetComponent<Animator>();
+
     }
 
     private void Update() {
@@ -49,7 +56,15 @@ public class PlayerMovement : MonoBehaviour {
     private void MovePlayer() {
         // Calculate move direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        moveDirection.y = -1;
         rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+
+        // Set Animator
+        if(horizontalInput != 0 || verticalInput != 0) {
+            animator.SetBool("IsMoving", true);
+        } else {
+            animator.SetBool("IsMoving", false);
+        }
     }
 
     private void SpeedControl() {

@@ -7,21 +7,20 @@ using TMPro;
 public class PackCostDisplay : MonoBehaviour
 {
     public int packNumber;
-    public ShopManager shopManager; // Reference to the ShopManager object
     public TextMeshProUGUI costText;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (shopManager != null)
+        if (ShopManager._instance != null)
         {
-            costText.text = "Cost : " + shopManager.packCosts[packNumber - 1];
+            costText.text = "Cost : " + ShopManager._instance.packCosts[packNumber - 1];
         }
         else
         {
