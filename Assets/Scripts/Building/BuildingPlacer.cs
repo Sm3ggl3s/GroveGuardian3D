@@ -71,7 +71,7 @@ public class BuildingPlacer : MonoBehaviour
         }
     }
 
-    protected virtual void SetBuildingPrefab(GameObject building) {
+    public void SetBuildingPrefab(GameObject building) {
         _buildingPrefab = building;
         PrepareBuilding();
         EventSystem.current.SetSelectedGameObject(null);

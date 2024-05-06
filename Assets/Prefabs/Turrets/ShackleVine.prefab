@@ -179,8 +179,6 @@ GameObject:
   - component: {fileID: 3749360858515956823}
   - component: {fileID: 8349666636412182967}
   - component: {fileID: 3965015560466559054}
-  - component: {fileID: 790836925363154184}
-  - component: {fileID: 6123294553381999957}
   m_Layer: 0
   m_Name: ShackleVine
   m_TagString: ShackleVine
@@ -196,8 +194,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1369671790987439063}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -8.13, y: -0, z: -5.33}
+  m_LocalRotation: {x: -0.7071069, y: -0, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: -7.85, y: -0, z: -5.33}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -206,7 +204,7 @@ Transform:
   - {fileID: 3018112436716094564}
   - {fileID: 8388921806483040815}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5577854208495070704
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -294,7 +292,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -302,54 +300,6 @@ CapsuleCollider:
   m_Height: 0.15365177
   m_Direction: 1
   m_Center: {x: 0, y: -0.0011753067, z: 0.000828453}
---- !u!54 &790836925363154184
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1369671790987439063}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &6123294553381999957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1369671790987439063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd384635a65664b22ad4809836ee3dfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  validPlacementMaterial: {fileID: 2100000, guid: 31aff87eebcf24896b3a0706258011fc, type: 2}
-  invalidPlacementMaterial: {fileID: 2100000, guid: 1d53b4ef46a5e4a2988599cb3dd035d3, type: 2}
-  meshComponents:
-  - {fileID: 3749360858515956823}
-  - {fileID: 863851589469815766}
-  - {fileID: 2852193850140910478}
-  - {fileID: 3386363074792523330}
-  hasValidPlacement: 0
-  isFixed: 0
 --- !u!1 &2759938492489353763
 GameObject:
   m_ObjectHideFlags: 0

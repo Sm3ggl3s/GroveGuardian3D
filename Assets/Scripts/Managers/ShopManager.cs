@@ -4,62 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ShopManager : MonoBehaviour {
-
-    public static ShopManager _instance;
-
-    public TextMeshProUGUI coinsText;
+public class ShopManager : MonoBehaviour
+{
     public List<string> names = new List<string> { "Coccanut", "Fervor Flower", "Banana Burst", "Shackle Vine", "Blast Blossom", "Grove Grow"};
     public List<int> costs = new List<int> { 3, 4, 3, 4, 5, 3};
     
-    [Header("Pack Data")]
     public List<string> packNames = new List<string> {"e", "e", "e"};
     public List<int> packCosts = new List<int> {0, 1, 2};
 
-    public List<Button> packButtons = new List<Button>();
-    
-
-    private void Awake() {
-        if (_instance == null) {
-            _instance = this;
-        } else {
-            Destroy(gameObject);
-        }
-    }
-
     // Start is called before the first frame update
-    void Start() {
+    void Start()
+    {
         Debug.Log(packCosts.Count);
-        coinsText.text = InventoryManager.instance.CoinTotal.ToString();
-        GenerateNewPack(1);    
+        GenerateNewPack(1);
         GenerateNewPack(2);
         GenerateNewPack(3);
-        
-    }
-
-    private void Update() {
-        for (int i = 0; i < packCosts.Count; i++) {
-            if (InventoryManager.instance.CoinTotal < packCosts[i]) {
-                packButtons[i].interactable = false;
-            } else {
-                packButtons[i].interactable = true;
-            }
-        }
-    }
-
-    public void addTowerToInventory(int packNumber) {
-        string towerName = packNames[packNumber - 1];
-        for (int i = 0; i < names.Count; i++) {
-            if (names[i] == towerName) {
-                if (InventoryManager.instance.CoinTotal > costs[i]) {
-                    InventoryManager.instance.removeCoins(costs[i]);
-                    coinsText.text = InventoryManager.instance.CoinTotal.ToString();
-                    InventoryManager.instance.inventoryQuantities[i]++;
-                    InventoryManager.instance.inventoryQuantitiesText[i].text = InventoryManager.instance.inventoryQuantities[i].ToString();
-                    break;
-                }
-            }
-        }
     }
 
     // Function to generate a new pack
@@ -108,4 +67,9 @@ public class ShopManager : MonoBehaviour {
         GenerateNewPack(3);
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 }

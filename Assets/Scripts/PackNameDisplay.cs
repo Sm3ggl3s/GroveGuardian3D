@@ -7,6 +7,7 @@ using TMPro;
 public class PackNameDisplay : MonoBehaviour
 {
     public int packNumber;
+    public ShopManager shopManager; // Reference to the ShopManager object
     public TextMeshProUGUI nameText;
 
     // Start is called before the first frame update
@@ -18,9 +19,9 @@ public class PackNameDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ShopManager._instance != null && packNumber > 0)
+        if (shopManager != null && packNumber > 0)
         {
-            nameText.text = ShopManager._instance.packNames[packNumber - 1];
+            nameText.text = shopManager.packNames[packNumber - 1];
         }
         else
         {
