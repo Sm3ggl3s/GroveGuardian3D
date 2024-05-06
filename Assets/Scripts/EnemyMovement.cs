@@ -23,6 +23,12 @@ public class EnemyMovement : MonoBehaviour {
     }
 
     void Update() {
+        // If the game is over, remove this object
+        if (GameManager.GameIsOver) {
+            Destroy(gameObject);
+            return;
+        }
+
         // Get direction to move to and move to it at calculated speed
         Vector3 dir = waypointTarget.position - transform.position;
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
