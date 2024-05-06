@@ -31,13 +31,13 @@ public class GUIManager : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.E)) {
+        if (Input.GetKeyDown(KeyCode.E) && isShopPanelActive == false) {
             ToggleShopPanel();
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (Input.GetKeyDown(KeyCode.Escape) || (Input.GetKeyDown(KeyCode.E) && isShopPanelActive == false)){
             CloseShopPanel();
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
