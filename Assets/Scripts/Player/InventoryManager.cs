@@ -8,12 +8,12 @@ public class InventoryManager : MonoBehaviour {
     public static InventoryManager instance;
 
 
-    public List<string> inventoryItems = new List<string> { "Coccanut", "Fervor Flower", "Banana Burst", "Shackle Vine", "Blast Blossom", "Fertilizer"};
+    public List<string> inventoryItems = new List<string> { "Cocannut", "FervorFlower", "BananaBurst", "ShackleVine", "BlastBloom", "Fertilizer"};
     public List<int> inventoryQuantities = new List<int> { 0, 0, 0, 0, 0, 0};
 
     public List<TextMeshProUGUI> inventoryQuantitiesText = new List<TextMeshProUGUI>();
 
-    public int coins = 30; 
+    public int CoinTotal = 30; 
 
     private void Awake() {
         if (instance == null) {
@@ -38,11 +38,11 @@ public class InventoryManager : MonoBehaviour {
     }
 
     public void addCoins(int amount) {
-        coins += amount;
+        CoinTotal += amount;
     }
 
     public void removeCoins(int amount) {
-        coins -= amount;
+        CoinTotal -= amount;
     }
 
 
