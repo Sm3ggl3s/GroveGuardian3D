@@ -131,8 +131,8 @@ public class Turret : MonoBehaviour
         else if (myTag == "ShackleVine")
         {
             //Increase slow or range if slow is maxxed
-            if(slowEffect > .1)
-                slowEffect -= .1;
+            if(slowEffect > .1f)
+                slowEffect -= .1f;
             else
                 range += 5;
         }
