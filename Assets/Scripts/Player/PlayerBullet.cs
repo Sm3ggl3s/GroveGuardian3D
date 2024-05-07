@@ -20,11 +20,11 @@ public class PlayerBullet : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         Transform target = other.transform;
-        if (target.CompareTag("Enemy")) {
+        if (other.CompareTag("Enemy")) {
             EnemyBasic enemy = target.GetComponent<EnemyBasic>();
             Debug.Log("Enemy Found" + enemy);
             if(enemy != null){
-                enemy.TakeDamage(damage, 1);
+                enemy.TakeDamage(damage, 1f);
                 Debug.Log("Enemy Hit");
             }
         }
