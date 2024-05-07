@@ -13,7 +13,7 @@ public class InventoryManager : MonoBehaviour {
 
     public List<TextMeshProUGUI> inventoryQuantitiesText = new List<TextMeshProUGUI>();
 
-    public int CoinTotal = 30; 
+    public int CoinTotal = 5; 
 
     private void Awake() {
         if (instance == null) {

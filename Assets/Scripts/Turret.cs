@@ -5,6 +5,8 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
 
+    public static Turret instance;
+
     [Header("Setup Fields")]
     private Transform target;
     public string targetTag = "Enemy";
@@ -21,6 +23,16 @@ public class Turret : MonoBehaviour
     public int turretBurst = 5;
     public float slowEffect = 0f;
     private float buffValue;
+
+    public bool canFire = false;
+
+    private void Awake() {
+        if (instance == null) {
+            instance = this;
+        } else {
+            Destroy(gameObject);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -97,11 +109,13 @@ public class Turret : MonoBehaviour
     }
 
     void shoot() {
-        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Bullet bullet = bulletGO.GetComponent<Bullet>();
+        if (canFire){
+            GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            Bullet bullet = bulletGO.GetComponent<Bullet>();
 
-        if(bullet != null)
-            bullet.Seek(target, turretDamage, slowEffect);
+            if(bullet != null)
+                bullet.Seek(target, turretDamage, slowEffect);
+        }
     }
     void OnDrawGizmosSelected () {
         Gizmos.color = Color.red;

@@ -10,8 +10,8 @@ public class towerType {
     public GameObject towerPrefab;
 }
 
-public class BuildingGridPlacer : BuildingPlacer
-{
+public class BuildingGridPlacer : BuildingPlacer {
+
     [Header("Grid Settings")]
     public float cellSize;
     public Vector2 gridOffset;
@@ -89,7 +89,8 @@ public class BuildingGridPlacer : BuildingPlacer
                         BuildingManager m = _toBuild.GetComponent<BuildingManager>();
                         if (m.hasValidPlacement) {
                             m.SetPlacementMode(PlacementMode.Fixed);
-                    
+                            Turret.instance.canFire = true;
+
                             //removes tower from inventory
                             InventoryManager.instance.removeTowerFromInventory(_buildingPrefab.name);
 
