@@ -19,15 +19,15 @@ public class PlayerBullet : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Enemy")) {
-            EnemyBasic enemy = other.GetComponent<EnemyBasic>();
+        Transform target = other.transform;
+        if (target.CompareTag("Enemy")) {
+            EnemyBasic enemy = target.GetComponent<EnemyBasic>();
             Debug.Log("Enemy Found" + enemy);
             if(enemy != null){
-                enemy.TakeDamage(damage, 0);
+                enemy.TakeDamage(damage, 1);
                 Debug.Log("Enemy Hit");
             }
         }
         Destroy(gameObject);
-
     }
 }
