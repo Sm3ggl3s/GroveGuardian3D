@@ -13,7 +13,7 @@ public class InventoryManager : MonoBehaviour {
 
     public List<TextMeshProUGUI> inventoryQuantitiesText = new List<TextMeshProUGUI>();
 
-    public int CoinTotal = 5; 
+    public int coins = 5; 
 
     private void Awake() {
         if (instance == null) {
@@ -38,11 +38,11 @@ public class InventoryManager : MonoBehaviour {
     }
 
     public void addCoins(int amount) {
-        CoinTotal += amount;
+        coins += amount;
     }
 
     public void removeCoins(int amount) {
-        CoinTotal -= amount;
+        coins -= amount;
     }
 
 

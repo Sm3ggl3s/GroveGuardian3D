@@ -623,7 +623,7 @@ MonoBehaviour:
   - {fileID: 121320154}
   - {fileID: 1203962257}
   - {fileID: 1315528293}
-  CoinTotal: 5
+  coins: 5
 --- !u!224 &86757791 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2719140884421555229, guid: 918c8c141c029404f8300d67a6a77d68, type: 3}
@@ -1755,7 +1755,9 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 300
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6468549208211852180, guid: a43561e9445fa4219a41351db700feaa, type: 3}
+    - {fileID: 4117756957502223262, guid: a43561e9445fa4219a41351db700feaa, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

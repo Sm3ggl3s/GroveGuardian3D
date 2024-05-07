@@ -32,6 +32,6 @@ public class EnemyBasic : MonoBehaviour
     void Die(){
         Destroy(gameObject);
         InventoryManager.instance.addCoins(1);
-        Debug.Log("Enemy Died. Coins added Total is: " + InventoryManager.instance.CoinTotal);
+        Debug.Log("Enemy Died. Coins added Total is: " + InventoryManager.instance.coins);
     }
 }
