@@ -122,9 +122,10 @@ public class Turret : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, range);
     }
 
-    void Fertilize(){
+    public void Fertilize() {
         // Grab turrets tag
         string myTag = gameObject.tag;
+        Debug.Log("Fertilizing " + myTag);
 
         // Buff depending on the tag
         if (myTag == "BananaBurst")
@@ -141,6 +142,7 @@ public class Turret : MonoBehaviour
         {
             // Increase range
             range += 5;
+            Debug.Log("Range increased to: " + range);
         }
         else if (myTag == "ShackleVine")
         {

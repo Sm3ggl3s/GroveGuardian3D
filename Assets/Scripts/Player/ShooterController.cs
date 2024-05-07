@@ -45,7 +45,12 @@ public class ShooterController : MonoBehaviour {
             }
         } else {
             animator.SetBool("IsShooting", false);
+            if (Input.GetKeyDown(KeyCode.Alpha6)) {
+                Aim();
+                Turret.instance.Fertilize();
+            }
         }
+
         
     }
 
