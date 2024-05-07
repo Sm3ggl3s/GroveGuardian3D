@@ -8,8 +8,8 @@ public class InventoryManager : MonoBehaviour {
     public static InventoryManager instance;
 
 
-    public List<string> inventoryItems = new List<string> { "Cocannut", "FervorFlower", "BananaBurst", "ShackleVine", "BlastBloom", "Fertilizer"};
-    public List<int> inventoryQuantities = new List<int> { 0, 0, 0, 0, 0, 0};
+    public List<string> inventoryItems = new List<string> { "Cocannut", "FervorFlower", "BananaBurst", "ShackleVine", "BlastBloom"};
+    public List<int> inventoryQuantities = new List<int> { 0, 0, 0, 0, 0};
 
     public List<TextMeshProUGUI> inventoryQuantitiesText = new List<TextMeshProUGUI>();
 

@@ -5,8 +5,6 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
 
-    public static Turret instance;
-
     [Header("Setup Fields")]
     private Transform target;
     public string targetTag = "Enemy";
@@ -23,16 +21,6 @@ public class Turret : MonoBehaviour
     public int turretBurst = 5;
     public float slowEffect = 0f;
     private float buffValue;
-
-    public bool canFire = false;
-
-    private void Awake() {
-        if (instance == null) {
-            instance = this;
-        } else {
-            Destroy(gameObject);
-        }
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -109,48 +97,14 @@ public class Turret : MonoBehaviour
     }
 
     void shoot() {
-        if (canFire){
-            GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            Bullet bullet = bulletGO.GetComponent<Bullet>();
+        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Bullet bullet = bulletGO.GetComponent<Bullet>();
 
-            if(bullet != null)
-                bullet.Seek(target, turretDamage, slowEffect);
-        }
+        if(bullet != null)
+            bullet.Seek(target, turretDamage, slowEffect);
     }
     void OnDrawGizmosSelected () {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
-    }
-
-    public void Fertilize() {
-        // Grab turrets tag
-        string myTag = gameObject.tag;
-        Debug.Log("Fertilizing " + myTag);
-
-        // Buff depending on the tag
-        if (myTag == "BananaBurst")
-        {
-            // Increase burst
-            turretBurst += 1;
-        }
-        else if (myTag == "BlastBloom")
-        {
-            // Increase damage
-            turretDamage += 3;
-        }
-        else if (myTag == "Cocannut")
-        {
-            // Increase range
-            range += 5;
-            Debug.Log("Range increased to: " + range);
-        }
-        else if (myTag == "ShackleVine")
-        {
-            //Increase slow or range if slow is maxxed
-            if(slowEffect > .1f)
-                slowEffect -= .1f;
-            else
-                range += 5;
-        }
     }
 }

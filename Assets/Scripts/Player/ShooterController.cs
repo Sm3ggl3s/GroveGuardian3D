@@ -16,7 +16,7 @@ public class ShooterController : MonoBehaviour {
     [Header("Bullet Settings")]
     [SerializeField] private Transform bulletPrefab;
     [SerializeField] private Transform bulletSpawnPoint;
-    private Vector3 mouseWorldPosition;
+    private Vector3 mouseWorldPosition;    
 
     [Header("Timer Settings")]
     private float timeSinceLastShot = 0f;
@@ -45,10 +45,6 @@ public class ShooterController : MonoBehaviour {
             }
         } else {
             animator.SetBool("IsShooting", false);
-            if (Input.GetKeyDown(KeyCode.Alpha6)) {
-                Aim();
-                Turret.instance.Fertilize();
-            }
         }
 
         

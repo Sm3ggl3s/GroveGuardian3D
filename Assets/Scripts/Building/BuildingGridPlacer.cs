@@ -12,6 +12,7 @@ public class towerType {
 
 public class BuildingGridPlacer : BuildingPlacer {
 
+
     [Header("Grid Settings")]
     public float cellSize;
     public Vector2 gridOffset;
@@ -53,7 +54,6 @@ public class BuildingGridPlacer : BuildingPlacer {
         }
         
         if (CinemachineCore.Instance.IsLive(basicCamera)) {
-
             for (int i = 0; i < towers.Count; i++) {
                 if (Input.GetKeyDown((KeyCode)((int)KeyCode.Alpha1 + i))) {
                     if (InventoryManager.instance.inventoryQuantities[i] > 0) {
@@ -89,8 +89,7 @@ public class BuildingGridPlacer : BuildingPlacer {
                         BuildingManager m = _toBuild.GetComponent<BuildingManager>();
                         if (m.hasValidPlacement) {
                             m.SetPlacementMode(PlacementMode.Fixed);
-                            Turret.instance.canFire = true;
-
+                    
                             //removes tower from inventory
                             InventoryManager.instance.removeTowerFromInventory(_buildingPrefab.name);
 
