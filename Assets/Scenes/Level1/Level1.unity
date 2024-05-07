@@ -2106,7 +2106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2719140884421555229, guid: 918c8c141c029404f8300d67a6a77d68, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2719140884421555229, guid: 918c8c141c029404f8300d67a6a77d68, type: 3}
       propertyPath: m_AnchorMin.x
@@ -2114,15 +2114,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2719140884421555229, guid: 918c8c141c029404f8300d67a6a77d68, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2719140884421555229, guid: 918c8c141c029404f8300d67a6a77d68, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2719140884421555229, guid: 918c8c141c029404f8300d67a6a77d68, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2719140884421555229, guid: 918c8c141c029404f8300d67a6a77d68, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2154,11 +2154,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2719140884421555229, guid: 918c8c141c029404f8300d67a6a77d68, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 670
       objectReference: {fileID: 0}
     - target: {fileID: 2719140884421555229, guid: 918c8c141c029404f8300d67a6a77d68, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -70
       objectReference: {fileID: 0}
     - target: {fileID: 2719140884421555229, guid: 918c8c141c029404f8300d67a6a77d68, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2183,6 +2183,10 @@ PrefabInstance:
     - target: {fileID: 3965430389844622125, guid: 918c8c141c029404f8300d67a6a77d68, type: 3}
       propertyPath: m_Name
       value: InventorySlot (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3965430389844622125, guid: 918c8c141c029404f8300d67a6a77d68, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4539449565564480989, guid: 918c8c141c029404f8300d67a6a77d68, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3244,7 +3248,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 924944472}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.023686577, y: 0.07086901, z: -0.0016833527, w: 0.99720293}
+  m_LocalRotation: {x: 0.023686577, y: 0.07086902, z: -0.001683353, w: 0.99720293}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3336,7 +3340,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9095107730924981550, guid: 3a615833d53694041ba77d105c2378f2, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 740
+      value: 680
       objectReference: {fileID: 0}
     - target: {fileID: 9095107730924981550, guid: 3a615833d53694041ba77d105c2378f2, type: 3}
       propertyPath: m_SizeDelta.y
@@ -6740,8 +6744,7 @@ MonoBehaviour:
   - Banana Blast
   - Shackle Vine
   - Blast Blossom
-  - Grove Grow
-  costs: 030000000400000003000000040000000500000003000000
+  costs: 0300000004000000030000000400000005000000
   packNames:
   - e
   - e
