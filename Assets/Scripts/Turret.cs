@@ -107,34 +107,4 @@ public class Turret : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
     }
-
-    void Fertilize(){
-        // Grab turrets tag
-        string myTag = gameObject.tag;
-
-        // Buff depending on the tag
-        if (myTag == "BananaBurst")
-        {
-            // Increase burst
-            turretBurst += 1;
-        }
-        else if (myTag == "BlastBloom")
-        {
-            // Increase damage
-            turretDamage += 3;
-        }
-        else if (myTag == "Cocannut")
-        {
-            // Increase range
-            range += 5;
-        }
-        else if (myTag == "ShackleVine")
-        {
-            //Increase slow or range if slow is maxxed
-            if(slowEffect > .1f)
-                slowEffect -= .1f;
-            else
-                range += 5;
-        }
-    }
 }

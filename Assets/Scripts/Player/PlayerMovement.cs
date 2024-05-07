@@ -6,6 +6,11 @@ public class PlayerMovement : MonoBehaviour {
     [Header("Movement")]
     public float moveSpeed;
     public float groundDrag;
+    public float jumpForce;
+    public float jumpCooldown;
+    public float airMultiplier;
+    bool canJump = true;
+
     public Transform orientation;
 
     [Header("Ground Check")]
@@ -51,13 +56,25 @@ public class PlayerMovement : MonoBehaviour {
     private void MyInput() {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
+
+        if (Input.GetKeyDown(KeyCode.Space) && canJump && isGrounded) {
+            canJump = false;
+            Jump();
+            Invoke("ResetJump", jumpCooldown);
+        }
     }
 
     private void MovePlayer() {
         // Calculate move direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-        moveDirection.y = -1;
-        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+
+        // On Ground
+        if (isGrounded) {
+            rb.AddForce(moveDirection.normalized * moveSpeed, ForceMode.Acceleration);
+        } else if (!isGrounded) {
+        // In Air
+            rb.AddForce(moveDirection.normalized * moveSpeed * airMultiplier, ForceMode.Acceleration);
+        }
 
         // Set Animator
         if(horizontalInput != 0 || verticalInput != 0) {
@@ -68,10 +85,21 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void SpeedControl() {
-        Vector3 flatVel = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         if (flatVel.magnitude > moveSpeed) {
             Vector3 limitedVel = flatVel.normalized * moveSpeed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
+    }
+
+    private void Jump() {
+        // reset y velocity
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+    }
+
+    private void ResetJump() {
+        canJump = true;
     }
 }

@@ -10,8 +10,9 @@ public class towerType {
     public GameObject towerPrefab;
 }
 
-public class BuildingGridPlacer : BuildingPlacer
-{
+public class BuildingGridPlacer : BuildingPlacer {
+
+
     [Header("Grid Settings")]
     public float cellSize;
     public Vector2 gridOffset;
@@ -53,7 +54,6 @@ public class BuildingGridPlacer : BuildingPlacer
         }
         
         if (CinemachineCore.Instance.IsLive(basicCamera)) {
-
             for (int i = 0; i < towers.Count; i++) {
                 if (Input.GetKeyDown((KeyCode)((int)KeyCode.Alpha1 + i))) {
                     if (InventoryManager.instance.inventoryQuantities[i] > 0) {

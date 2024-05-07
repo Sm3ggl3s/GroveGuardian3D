@@ -30,7 +30,6 @@ public class ShopManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         Debug.Log(packCosts.Count);
-        coinsText.text = InventoryManager.instance.CoinTotal.ToString();
         GenerateNewPack(1);    
         GenerateNewPack(2);
         GenerateNewPack(3);
@@ -38,8 +37,9 @@ public class ShopManager : MonoBehaviour {
     }
 
     private void Update() {
+        coinsText.text = InventoryManager.instance.coins.ToString();
         for (int i = 0; i < packCosts.Count; i++) {
-            if (InventoryManager.instance.CoinTotal < packCosts[i]) {
+            if (InventoryManager.instance.coins < packCosts[i]) {
                 packButtons[i].interactable = false;
             } else {
                 packButtons[i].interactable = true;
@@ -51,9 +51,9 @@ public class ShopManager : MonoBehaviour {
         string towerName = packNames[packNumber - 1];
         for (int i = 0; i < names.Count; i++) {
             if (names[i] == towerName) {
-                if (InventoryManager.instance.CoinTotal > costs[i]) {
+                if (InventoryManager.instance.coins > costs[i]) {
                     InventoryManager.instance.removeCoins(costs[i]);
-                    coinsText.text = InventoryManager.instance.CoinTotal.ToString();
+                    coinsText.text = InventoryManager.instance.coins.ToString();
                     InventoryManager.instance.inventoryQuantities[i]++;
                     InventoryManager.instance.inventoryQuantitiesText[i].text = InventoryManager.instance.inventoryQuantities[i].ToString();
                     break;

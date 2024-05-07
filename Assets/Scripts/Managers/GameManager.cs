@@ -29,12 +29,12 @@ public class GameManager : MonoBehaviour {
             return;
         }
 
-        /* Shortcut to end game */
-        /*
-        if(Input.GetKeyDown("e")) {
-            WinGame();
-        }
-        */
+        // /* Shortcut to end game */
+        // /*
+        // if(Input.GetKeyDown("e")) {
+        //     WinGame();
+        // }
+        // */
 
         // if Greenhouse is destroyed, end the game
         if(GardenIsDestroyed) {
