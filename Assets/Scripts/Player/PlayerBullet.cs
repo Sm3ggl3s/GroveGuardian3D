@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour {
     private Rigidbody playerBullet_rb;
+    public int damage = 10;
+
+    private Transform target;
+    public string targetTag = "Enemy";
 
     private void Awake() {
         playerBullet_rb = GetComponent<Rigidbody>();
@@ -15,6 +19,15 @@ public class PlayerBullet : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("Enemy")) {
+            EnemyBasic enemy = other.GetComponent<EnemyBasic>();
+            Debug.Log("Enemy Found" + enemy);
+            if(enemy != null){
+                enemy.TakeDamage(damage, 0);
+                Debug.Log("Enemy Hit");
+            }
+        }
         Destroy(gameObject);
+
     }
 }
